@@ -13,10 +13,18 @@ nlp = spacy.load('en_core_web_sm')
 
 
 url = f'''https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:("{datetime.today().year}-{datetime.today().month}-{datetime.today().day-1}") AND type_of_material:("Editorial")&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b'''
-
-r = requests.get(url, verify=False)
+print(url)
+r = requests.get(url)
 editorials = r.json()['response']['docs']
 print(f'{len(editorials)} editorials found')
+
+headlines = []
+for editorial in editorials:
+    headlines.append(editorial['headline']['main'])
+
+snippets = []
+for editorial in editorials:
+    snippets.append(editorial['snippet'])
 
 web_url = []
 for editorial in editorials:
@@ -28,16 +36,16 @@ for editorial in editorials:
 
 r = []
 for url in web_url:
-    r.append(requests.get(url, verify=False))
+    r.append(requests.get(url))
 
 i_r = []
 for url in image_url:
-    i_r.append(requests.get(f'https://static01.nyt.com/{url}', verify=False))
+    i_r.append(requests.get(f'https://static01.nyt.com/{url}'))
 
 
 from bs4 import BeautifulSoup
 
-for _, i_u in zip(r, image_url):
+for _, i_u, h, s in zip(r, image_url, headlines, snippets):
     soup = BeautifulSoup(_.content, "lxml")
 
 #def find_correct_section(tag):
@@ -48,8 +56,18 @@ for _, i_u in zip(r, image_url):
 #        return False
     dst_soup = BeautifulSoup('', 'html.parser')
     i = BeautifulSoup()
+    #####
+    head = i.new_tag('h1')
+    head.string = h
+    dst_soup.append(head)
+    #####
     im = i.new_tag('img', src=f'https://static01.nyt.com/{i_u}')
     dst_soup.append(im)
+    #####
+    snip = i.new_tag('h6')
+    snip.string = s
+    dst_soup.append(snip)
+    #####
 
     for sec in soup.find_all('section', attrs={'name':'articleBody'}):
         for p in sec.find_all('p'):
@@ -70,10 +88,10 @@ for _, i_u in zip(r, image_url):
     print("**************************************************************")
     print("**************************************************************")
     html = dst_soup.prettify("utf-8")
-    with open("nyt.html", "ab") as file:
+    with open("template.html", "ab") as file:
         file.write(html)
-        
-filename = 'file:///'+os.getcwd()+'/' + 'nyt.html'
+
+filename = 'file:///'+os.getcwd()+'/' + 'template.html'
 webbrowser.open_new_tab(filename)
 # This will also catch the last paragraph which we have to ignore.
 # Find a way to ignore the last paragraph.
