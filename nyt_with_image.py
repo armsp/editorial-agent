@@ -70,7 +70,7 @@ for _, i_u, h, s in zip(r, image_url, headlines, snippets):
     #####
 
     for sec in soup.find_all('section', attrs={'name':'articleBody'}):
-        for p in sec.find_all('p'):
+        for p in sec.find_all('p')[:-2]:
             print(p.text)
             s = BeautifulSoup()
             pp = BeautifulSoup()
@@ -93,7 +93,5 @@ for _, i_u, h, s in zip(r, image_url, headlines, snippets):
 
 filename = 'file:///'+os.getcwd()+'/' + 'template.html'
 webbrowser.open_new_tab(filename)
-# This will also catch the last paragraph which we have to ignore.
-# Find a way to ignore the last paragraph.
 
 #https://static01.nyt.com/
