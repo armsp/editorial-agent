@@ -5,15 +5,21 @@ Read NYT and Guardian editorials distraction free with important sentences and w
 
 ### TODO
 
-1.
-    | NYT | Guardian |
-    | :--- | :--- |
-    | - [x] Images | - [ ] Images |
-    | - [ ] Uncommon words highlighting | - [ ] Uncommon words highlighting|
-    | - [ ] Uncommon words meaning | - [ ] Uncommon words meaning |
-    | - [x] Title | - [ ] Title |
-    | - [x] Subtitle | - [ ] Subheading |
-    | - [x] Sentence highlighting | - [x] Sentence highlighting |
+1. NYT
+
+    - [x] Images
+    - [ ] Uncommon words highlighting
+    - [ ] Uncommon words meaning
+    - [x] Title
+    - [x] Subtitle
+    - [x] Sentence highlighting
+2. Guardian
+    - [ ] Images
+    - [ ] Uncommon words highlighting
+    - [ ] Uncommon words meaning
+    - [ ] Title
+    - [ ] Subheading
+    - [x] Sentence highlighting
 
 2. - [ ] API Keys as Environment variables
 3. - [ ] Reading mode
