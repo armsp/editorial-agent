@@ -1,7 +1,8 @@
 # editorial-agent
 Read NYT and Guardian editorials distraction free with important sentences and words highlighted to improve your writing/english skills
 
-
+#### P.S 
+This project was inspired by the Writing in the Sciences course by Stanford University on Coursera and my love for writing. **It is a functioning project**. It is however a quickly put together POC so the code is really ugly. Needs a lot of work to structure it properly.
 
 ### TODO
 
