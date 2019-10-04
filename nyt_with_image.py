@@ -1,7 +1,7 @@
 ''' NYT query urls '''
-#https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%22Opinion%22%20AND%20news_desk:%22Editorial%22&sort=newest&begin_date=20190615&end_date=20190615&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b
+#https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%22Opinion%22%20AND%20news_desk:%22Editorial%22&sort=newest&begin_date=20190615&end_date=20190615&api-key=<your key>
 
-#https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:(%222019-06-15%22)%20AND%20type_of_material:(%22Editorial%22)&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b
+#https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:(%222019-06-15%22)%20AND%20type_of_material:(%22Editorial%22)&sort=newest&api-key=<your key>
 from datetime import datetime
 import requests
 import spacy
@@ -12,7 +12,7 @@ from highlight import mark_if_needed
 nlp = spacy.load('en_core_web_sm')
 
 
-url = f'''https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:("{datetime.today().year}-{datetime.today().month}-{datetime.today().day-1}") AND type_of_material:("Editorial")&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b'''
+url = f'''https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:("{datetime.today().year}-{datetime.today().month}-{datetime.today().day-1}") AND type_of_material:("Editorial")&sort=newest&api-key=<your key>'''
 print(url)
 r = requests.get(url)
 editorials = r.json()['response']['docs']
