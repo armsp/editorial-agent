@@ -11,7 +11,7 @@ colon_re = ":"
 dash_re = "( — )+|( - )+"
 
 guardian_endpoint = '''https://content.guardianapis.com/tone/editorials'''
-guardian_key = 'd7539ac9-6ce6-43af-b4ab-a373a2bb2968'
+guardian_key = ''
 guardian_payload = {'show-fields': 'body', 'api-key': guardian_key}
 
 nyt_endpoint = ''
