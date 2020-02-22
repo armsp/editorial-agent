@@ -24,42 +24,41 @@ def mark_if_needed(text):
         else:
             yield (1, sent.text)
 
-
-
-p_elements = src_soup.find_all('p')
-for p in p_elements:
-    s = BeautifulSoup()
-    pp = BeautifulSoup()
-    par = pp.new_tag('p')
-    #a_elements = p.find_all('a')
-    #p.string = mark_if_needed(p.text)
-    #new_str=''
-    #p.clear()
-    for sent in mark_if_needed(p.text):
-        print(f'returned sentence is {sent}')
+if __name__ == "__main__":
+    p_elements = src_soup.find_all('p')
+    for p in p_elements:
+        s = BeautifulSoup()
+        pp = BeautifulSoup()
+        par = pp.new_tag('p')
+        #a_elements = p.find_all('a')
+        #p.string = mark_if_needed(p.text)
+        #new_str=''
         #p.clear()
-        #new_str+=sent[1]
-
-        if sent[0] is 1:
-            m = s.new_tag('mark')
-            #m.string = sent[1]
-            m.append(sent[1])
-            #p.insert_after(m)
-            par.append(m)
-
-        else:
-            par.append(sent[1])
-            #if p.string:
-            #    p.string+=sent[1]
+        for sent in mark_if_needed(p.text):
+            print(f'returned sentence is {sent}')
+            #p.clear()
             #new_str+=sent[1]
 
-    #p.string = new_str
-    dst_soup.append(par)
-    #for a in a_elements:
-        #a.string = mark_if_needed(a.text)
-        #p.append(a)
+            if sent[0] is 1:
+                m = s.new_tag('mark')
+                #m.string = sent[1]
+                m.append(sent[1])
+                #p.insert_after(m)
+                par.append(m)
 
-print(dst_soup.prettify())
-html = dst_soup.prettify("utf-8")
-with open("output.html", "wb") as file:
-    file.write(html)
+            else:
+                par.append(sent[1])
+                #if p.string:
+                #    p.string+=sent[1]
+                #new_str+=sent[1]
+
+        #p.string = new_str
+        dst_soup.append(par)
+        #for a in a_elements:
+            #a.string = mark_if_needed(a.text)
+            #p.append(a)
+
+    print(dst_soup.prettify())
+    html = dst_soup.prettify("utf-8")
+    with open("output.html", "wb") as file:
+        file.write(html)

@@ -4,12 +4,12 @@
 #https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:(%222019-06-15%22)%20AND%20type_of_material:(%22Editorial%22)&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b
 from datetime import datetime
 import requests
-import spacy
+#import spacy
 import webbrowser
 import os
 from highlight import mark_if_needed
 
-nlp = spacy.load('en_core_web_sm')
+#nlp = spacy.load('en_core_web_sm')
 
 
 url = f'''https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:("{datetime.today().year}-{datetime.today().month}-{datetime.today().day-1}") AND type_of_material:("Editorial")&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b'''
@@ -17,6 +17,12 @@ print(url)
 r = requests.get(url)
 editorials = r.json()['response']['docs']
 print(f'{len(editorials)} editorials found')
+
+if len(editorials) == 0:
+    url = f'''https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=pub_date:("{datetime.today().year}-{datetime.today().month}-{datetime.today().day-2}") AND type_of_material:("Editorial")&sort=newest&api-key=uqlGVrFNDgLiZZgiaLwFEAMgMTEIX35b'''
+    r = requests.get(url)
+    editorials = r.json()['response']['docs']
+    print(f'{len(editorials)} editorials found')
 
 headlines = []
 for editorial in editorials:
