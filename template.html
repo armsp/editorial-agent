@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>NYT Editorial</title>
+    <meta charset="utf-8">
+    <title>NYT Editorial</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-p, body {
-    font-family: 'Roboto';
-    font-size: large
-}
-span{
-    color:blue;
-    background-color: azure
-}
-span:hover{
-    color: darkblue;
-    background-color: aqua
-}
-img {
-    display: block;
-    margin: auto;
-}
-h1 {
-    text-align: center
-}
-h6 {
-    text-align: center;
-    font-size: x-large;
-    font-weight: normal;
-    margin: 0%;
-}
-</style>
 
 <body>
+    <div class="container">
+        {% for editorial in editorials %}
+            <div class="editorial">
+                <div class="editorial-title">{{ editorial.title }}</div>
+                <div class="editorial-image">{{ editorial.image }}</div>
+                <div class="editorial-subtitle">{{ editorial.subtitle }}</div>
+                <div class="editorial-article">{{ editorial.article }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
