@@ -12,7 +12,7 @@
         {% for editorial in editorials %}
             <div class="editorial">
                 <div class="editorial-title">{{ editorial.title }}</div>
-                <div class="editorial-image">{{ editorial.image }}</div>
+                <div class="editorial-image"><img src={{ editorial.image }}></div>
                 <div class="editorial-subtitle">{{ editorial.subtitle }}</div>
                 <div class="editorial-article">{{ editorial.article }}</div>
             </div>

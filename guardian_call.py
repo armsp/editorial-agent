@@ -6,7 +6,7 @@ import yaml
 import requests
 
 from render import render_editorial
-from formatter import editorial_formatter
+from editorial_formatter import editorial_formatter
 
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s - %(asctime)s - %(message)s')
 guardian_endpoint = '''https://content.guardianapis.com/tone/editorials'''
@@ -45,7 +45,7 @@ else:
 
 if __name__=='__main__':
     import webbrowser
-    rendered_editorials = 'output.html'
+    rendered_editorials = 'guardian-output.html'
     webbrowser.open_new_tab(rendered_editorials)
 
 

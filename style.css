@@ -55,10 +55,12 @@ h6 {
 }
 .editorial-title{
     /* display: flex; */
+    font-weight: bold;
+    font-size: xx-large;
     text-align: center;
     align-items: center;
     justify-content: center;
-
+    padding: 1em;
 }
 .editorial-image{
 
@@ -66,7 +68,7 @@ h6 {
 .editorial-subtitle{
     padding: 0.5em;
     text-align: center;
-
+    color: darkgrey;
 }
 .editorial-article{
 
