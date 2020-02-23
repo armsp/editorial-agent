@@ -1,3 +1,8 @@
 output.html
 __pycache__
 helloworld*.html
+demo_using_bsoup.py
+exp.html
+jinja_form_html.py
+editorial_grid_class_bsoup.py
+.secrets.yaml
