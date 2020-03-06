@@ -1,6 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 
-template_loader = FileSystemLoader('./')
+template_loader = FileSystemLoader('./templates')
 template_env = Environment(loader=template_loader)
 
 TEMPLATE_FILE = "template.html"
